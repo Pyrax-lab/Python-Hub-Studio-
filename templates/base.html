@@ -90,7 +90,7 @@
                         {% goods_category as categories %}
                         {% for category in categories %}
                         
-                        <li><a class="dropdown-item text-white" href="{% url "goods:index" %}">{{category.name}}</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "goods:index" category.slug %}">{{category.name}}</a></li>
 
 
                         {% endfor %}
