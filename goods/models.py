@@ -32,3 +32,6 @@ class Products(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def id_display(self):
+        return f"{self.id:05}"

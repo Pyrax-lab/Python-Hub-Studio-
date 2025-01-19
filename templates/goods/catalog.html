@@ -49,13 +49,15 @@
     <!-- Карта товара -->
     <div class="col-lg-4 col-md-6 p-4">
         <div class="card border-primary rounded custom-shadow">
-            <img src="{% static i.image %}" class="card-img-top" alt="...">
             <div class="card-body">
-                <a href="../goods/product.html">
+                {% if i.image %}
+                    <img src="{{i.image.url}}" class="card-img-top" alt="...">
+                {% endif %}
+                <a href="{% url "goods:product" i.slug %}">
                     <p class="card-title">{{i.name}}</p>
                 </a>
                 <p class="card-text text-truncate">{{i.description}}</p>
-                <p class="product_id">id:{{i.id}} </p>
+                <p class="product_id">id:{{i.id_display}} </p>
                 <div class="d-flex justify-content-between">
                     <p><s>{{i.price}}</s> $</p>
                     <p><strong>90.00 $</strong></p>
