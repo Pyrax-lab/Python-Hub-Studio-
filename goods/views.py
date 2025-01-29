@@ -3,7 +3,7 @@ from .models import Products
 from django.core.paginator import Paginator
 from django.utils.http import urlencode
 from django.db.models import Q
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
 # Create your views here.
 
 
@@ -26,13 +26,13 @@ def catalog(request, catalog_slug=None):
         else:
             vector = SearchVector('name', 'description')
             query  = SearchQuery(query)
-            goods = Products.objects.annotate(rank=SearchRank(vector, query)).order_by('-rank')
-            # words = [word for word in query.split() if len(word) > 2 ]
-            # q_query = Q()
+            goods = Products.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gt=0).order_by('-rank')
+            # Подсветка поисковых слов
+            goods = goods.annotate(headline_name=SearchHeadline("name", query, start_sel = '<span style="background-color:yellow;">', stop_sel="</span>"))
+            goods = goods.annotate(headline_desc=SearchHeadline("description", query, start_sel = '<span style="background-color:yellow;">', stop_sel="</span>"))
 
-            # for word in words:
-            #     q_query |= Q(description__icontains = word) | Q(name__icontains = word)
-            # goods = Products.objects.filter(q_query)
+            
+            
 
     else:
         goods = get_list_or_404(Products.objects.filter(category__slug = catalog_slug))

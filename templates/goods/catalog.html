@@ -56,9 +56,23 @@
                     <img src="{{i.image.url}}" class="card-img-top" alt="...">
                 {% endif %}
                 <a href="{% url "goods:product" i.slug %}">
-                    <p class="card-title">{{i.name}}</p>
+                    {% if i.headline_name %}
+                    {% autoescape off %}
+                        {{i.headline_name}}
+                    {% endautoescape %}
+                    {% else %}
+                        <p class="card-title">{{i.name}}</p>
+                    {% endif %}    
                 </a>
-                <p class="card-text text-truncate">{{i.description}}</p>
+
+                {% if i.headline_desc %}
+                    {% autoescape off %}
+                        {{i.headline_desc}}
+                    {% endautoescape %}
+                {% else %}
+                    <p class="card-text text-truncate">{{i.description}}</p>
+                {% endif %}  
+
                 <p class="product_id">id:{{i.id_display}} </p>
                 <div class="d-flex justify-content-between">
                     
