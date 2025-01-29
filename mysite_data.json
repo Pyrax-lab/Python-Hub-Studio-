@@ -455,6 +455,19 @@
   }
 },
 {
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2025-01-11T12:05:26.705Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "Стул офисный",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+  }
+},
+{
   "model": "auth.permission",
   "pk": 1,
   "fields": {
@@ -1007,7 +1020,7 @@
     "name": "Стул офисный",
     "slug": "stul-ofisnyj",
     "description": "Описание товара, про то какой он классный, но это стул, что тут сказать...",
-    "image": "",
+    "image": "goods_images/default.jpg",
     "price": "30.00",
     "quantity": 30,
     "category": 13
