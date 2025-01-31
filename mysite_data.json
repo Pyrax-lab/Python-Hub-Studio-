@@ -755,24 +755,7 @@
     "codename": "view_products"
   }
 },
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$600000$8eFLr9YwRzpnoBGejrNo5j$+WmIh1gZuKV26gZNjXY2QB/Nh+aEPuVlTPuiA97orak=",
-    "last_login": "2025-01-08T20:04:01.824Z",
-    "is_superuser": true,
-    "username": "root",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2025-01-04T11:51:46.669Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
+
 {
   "model": "contenttypes.contenttype",
   "pk": 1,
