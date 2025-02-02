@@ -1,6 +1,8 @@
 from django import forms 
 from .models import User 
 from django.contrib.auth.forms import AuthenticationForm # Используется только для Логина тоесть не создаёт нового пользователя
+from django.contrib.auth.forms import UserCreationForm   # Используется только для Регистрации и создаёт нового пользователя
+
 
 class UserLoginForm(AuthenticationForm):
 
@@ -12,4 +14,17 @@ class UserLoginForm(AuthenticationForm):
                                                                                    "placeholder":"Ваш пароль"}))
     class Meta:
         model = User
+        fields = ["username", "password"]
         
+    
+class UserRegisterForm(UserCreationForm):
+    class Meta:
+        model = User 
+        fields = ["first_name", "last_name", "email", "username", "password1", "password2"]
+
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.CharField()
+    username = forms.CharField()
+    password1 = forms.CharField()
+    password2 =forms.CharField()
